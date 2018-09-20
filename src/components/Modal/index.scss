@@ -1,0 +1,94 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.hidden {
+  display: none;
+}
+@mixin mask-bg {
+  background: rgba(0, 0, 0, 0.65);
+}
+@mixin mask-bg-transition-500 {
+  transition: opacity .3s ease-out;
+}
+@mixin mask-bg-transition-300 {
+  transition: opacity .3s ease-out;
+}
+.react-modal {
+  .modal-mask {
+    @include mask-bg;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  .modal-content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: white;
+    width: 520px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 4px;
+    z-index: 1000;
+    .header {
+      text-align: left;
+      height: 55px;
+      padding: 16px 24px;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.85);
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .body {
+      padding: 24px;
+      text-align: left;
+    }
+    .footer {
+      text-align: right;
+      padding: 10px 16px;
+      border-top: 1px solid #e8e8e8;
+    }
+  }
+}
+
+//动画
+.modal-enter {
+  .modal-mask {
+    opacity: 0;
+  }
+  &.modal-enter-active {
+    .modal-mask {
+      opacity: 1;
+      @include mask-bg-transition-300;
+    }
+  }
+}
+.modal-leave {
+  .modal-mask {
+    opacity: 1;
+  }
+  &.modal-leave-active {
+    .modal-mask {
+      opacity: 0;
+      @include mask-bg-transition-300;
+    }
+  }
+}
+.modal-appear {
+  .modal-mask {
+    opacity: 0;
+  }
+  &.modal-appear-active {
+    .modal-mask {
+      opacity: 1;
+      @include mask-bg-transition-300;
+    }
+  }
+}
